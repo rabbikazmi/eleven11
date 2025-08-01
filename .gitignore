@@ -1,0 +1,30 @@
+# Local batch files (Windows-specific with hardcoded paths)
+*.bat
+
+# Environment variables
+.env
+.env.local
+
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Model weights (too large for git)
+model\ weights/
+
+# Temporary test files
+*timing*.py
+test_*.py

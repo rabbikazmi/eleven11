@@ -41,10 +41,14 @@ def detect_gear():
         label = model.names[cls_id]
         conf = float(box.conf[0])
 
+        # Convert x1,y1,x2,y2 to x,y,width,height format for frontend
+        width = x2 - x1
+        height = y2 - y1
+
         detections.append({
-            "label": label,
-            "confidence": round(conf, 3),
-            "box": [x1, y1, x2, y2]
+            "class_name": label,
+            "confidence": conf,
+            "bbox": [x1, y1, width, height]
         })
 
         # Draw boxes on the image
