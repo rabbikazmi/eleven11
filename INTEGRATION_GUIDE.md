@@ -36,7 +36,7 @@ eleven11/
 - CORS enabled for frontend requests
 - Endpoints: `/` (health) and `/detect` (main API)
 
-### Frontend (Port 3000) ✅ 
+### Frontend (Port 3000) 
 - React development server running
 - Camera integration with react-webcam
 - File upload functionality
