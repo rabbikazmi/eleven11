@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Github, ExternalLink, Users, Code, Brain, Rocket, Shield, Zap, Terminal } from 'lucide-react';
 
 const About = () => {
+  const { t } = useTranslation();
+  
   const teamMembers = 
 [
   {
@@ -23,36 +26,31 @@ const About = () => {
 
   const techStack = [
     {
-      category: 'FRONTEND',
-      technologies: ['React.js', 'Three.js', 'TailwindCSS', 'React Router'],
+      category: 'FRONTEND_TECHNOLOGIES',
+      technologies: ['React.js 18+', 'Three.js 3D Engine', 'TailwindCSS Framework', 'React Router DOM'],
       icon: Code
     },
     {
-      category: 'BACKEND',
-      technologies: ['Flask', 'Python', 'FastAPI', 'OpenCV'],
+      category: 'BACKEND_&_AI_STACK',
+      technologies: ['Flask Python API', 'YOLOv8 Neural Network', 'PyTorch Framework', 'OpenCV Computer Vision'],
       icon: Brain
-    },
-    {
-      category: 'AI/ML',
-      technologies: ['YOLOv8', 'PyTorch', 'Computer Vision', 'Object Detection'],
-      icon: Zap
-    },
+    }
   ];
 
   const projectFeatures = [
     {
-      title: 'REAL_TIME_DETECTION',
-      description: 'Advanced YOLOv8 model processes images in real-time with high accuracy for space station environments.',
+      title: t('about.features.realtime'),
+      description: t('home.features.realtimeDesc'),
       icon: Rocket
     },
     {
-      title: 'INTERACTIVE_3D_MODELS',
-      description: 'Immersive 3D visualization of space equipment using Three.js and WebGL for enhanced user experience.',
+      title: t('about.features.accuracy'),
+      description: t('home.features.advancedDesc'),
       icon: Code
     },
     {
-      title: 'MISSION_CRITICAL_SAFETY',
-      description: 'Designed specifically for space station safety protocols, ensuring astronaut protection and mission success.',
+      title: t('about.features.secure'),
+      description: t('home.features.securityDesc'),
       icon: Shield
     }
   ];
@@ -72,12 +70,12 @@ const About = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl lg:text-7xl font-black mb-6 text-white font-mono tracking-tight">
-            ABOUT_ELEVEN11.EXE
+            {t('about.title')}
           </h1>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-mono">
-            Advanced AI-powered system for detecting critical safety equipment in space station environments.
+            {t('about.description')}
             <br />
-            Built with modern web technologies and advanced machine learning algorithms.
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -134,14 +132,14 @@ const About = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white font-mono">
-              TECHNOLOGY_STACK
+              {t('about.technology.title')}
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-mono">
-              Built with modern, industry-standard technologies for maximum performance and reliability
+              {t('about.subtitle')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {techStack.map((stack, index) => (
               <div key={index} className="group bg-gray-900/20 backdrop-blur-sm border border-gray-800 p-8 hover:bg-gray-800/30 hover:border-gray-600 transition-all duration-500 transform hover:scale-105">
                 <div className="relative z-10 text-center">
@@ -170,10 +168,10 @@ const About = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-white font-mono">
-              TEAM_ELEVEN11
+              {t('about.team.title')}
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-mono">
-              A multidisciplinary team of students in STEM
+              {t('about.team.description')}
             </p>
           </div>
 
@@ -199,27 +197,27 @@ const About = () => {
 
         {/* GitHub and Credits Section */}
         <div className="text-center">
-          <div className="bg-gray-900/20 backdrop-blur-sm border border-gray-800 p-8 lg:p-12">
-            <h2 className="text-3xl font-bold text-white mb-6 flex items-center justify-center font-mono">
-              <Github className="w-8 h-8 mr-3 text-gray-400" />
+          <div className="bg-gray-900/20 backdrop-blur-sm border border-gray-800 p-6 lg:p-8 max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center justify-center font-mono">
+              <Github className="w-6 h-6 mr-3 text-gray-400" />
               OPEN_SOURCE_&_CREDITS
             </h2>
             
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed font-mono">
+            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto leading-relaxed font-mono">
               ELEVEN11 is committed to advancing space safety technology through open collaboration. 
               Our project leverages cutting-edge research and industry-standard tools.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <a
-                href="https://github.com/eleven11/space-safety-detection"
+                href="https://github.com/11-11-crew/eleven11"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center px-8 py-4 bg-white text-black hover:bg-gray-200 font-bold text-lg transition-all duration-300 transform hover:scale-105 font-mono relative overflow-hidden"
+                className="group inline-flex items-center px-6 py-3 bg-white text-black hover:bg-gray-200 font-bold text-base transition-all duration-300 transform hover:scale-105 font-mono relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                 <div className="relative z-10 flex items-center">
-                  <Github className="w-6 h-6 mr-3 transform transition-transform duration-300 group-hover:rotate-12 group-hover:text-white" />
+                  <Github className="w-5 h-5 mr-2 transform transition-transform duration-300 group-hover:rotate-12 group-hover:text-white" />
                   <span className="group-hover:text-white transition-colors">VIEW_ON_GITHUB</span>
                   <ExternalLink className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
                 </div>
@@ -228,13 +226,10 @@ const About = () => {
 
             <div className="text-center space-y-2 font-mono">
               <p className="text-gray-400">
-                <span className="text-white">TECHNOLOGIES:</span> YOLOv8 by Ultralytics, React.js, Three.js, Flask
-              </p>
-              <p className="text-gray-400">
                 <span className="text-white">SPECIAL_THANKS:</span> HackWithIndia - BuildWithDelhi2.0
               </p>
               <p className="text-gray-400">
-                <span className="text-white">TEAM:</span> Eleven11
+                <span className="text-white">TEAM:</span> 11:11 Crew
               </p>
             </div>
           </div>

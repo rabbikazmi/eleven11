@@ -4,9 +4,13 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detection from './pages/Detection';
 import About from './pages/About';
+import useLanguageSetup from './hooks/useLanguageSetup';
 import './App.css';
+import './i18n';
 
 function App() {
+  useLanguageSetup();
+
   return (
     <div className="App min-h-screen bg-gray-900 text-white">
       <Router>

@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "HOME",
+    "detection": "DETECTION",
+    "about": "ABOUT",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "Advanced Object Detection System",
+    "description": "Next-generation AI-powered object detection and analysis platform",
+    "features": {
+      "realtime": "Real-time Detection",
+      "realtimeDesc": "Instant object detection and classification",
+      "advanced": "Advanced AI",
+      "advancedDesc": "State-of-the-art machine learning models",
+      "security": "Secure Processing",
+      "securityDesc": "Enterprise-grade security and privacy",
+      "fast": "Lightning Fast",
+      "fastDesc": "Optimized for speed and accuracy"
+    },
+    "buttons": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More",
+      "startDetection": "Start Detection"
+    },
+    "stats": {
+      "accuracy": "Accuracy",
+      "speed": "Processing Speed",
+      "supported": "Supported Objects"
+    }
+  },
+  "detection": {
+    "title": "OBJECT DETECTION",
+    "subtitle": "Upload an image or use your camera to detect objects",
+    "status": {
+      "ready": "READY",
+      "initializing": "INITIALIZING",
+      "loading_models": "LOADING_MODELS",
+      "calibrating": "CALIBRATING",
+      "scanning": "SCANNING",
+      "processing": "PROCESSING"
+    },
+    "upload": {
+      "title": "Upload Image",
+      "dragDrop": "Drag & drop an image here",
+      "or": "or",
+      "browse": "Browse Files",
+      "camera": "Use Camera",
+      "formats": "Supported formats: JPG, PNG, WEBP"
+    },
+    "camera": {
+      "capture": "Capture Photo",
+      "close": "Close Camera",
+      "retake": "Retake Photo"
+    },
+    "results": {
+      "title": "Detection Results",
+      "detected": "Detected Objects",
+      "confidence": "Confidence",
+      "coordinates": "Coordinates",
+      "noObjects": "No objects detected",
+      "error": "Detection failed",
+      "download": "Download Results"
+    },
+    "errors": {
+      "uploadFailed": "Failed to upload image",
+      "detectionFailed": "Detection failed",
+      "invalidFormat": "Invalid image format",
+      "cameraError": "Camera access denied",
+      "networkError": "Network error occurred"
+    },
+    "scanning": {
+      "progress": "Scanning Progress",
+      "analyzing": "Analyzing image...",
+      "complete": "Scan Complete"
+    }
+  },
+  "about": {
+    "title": "About ELEVEN11",
+    "subtitle": "Advanced Object Detection Technology",
+    "description": "ELEVEN11 is a cutting-edge object detection system powered by state-of-the-art artificial intelligence and machine learning algorithms.",
+    "features": {
+      "title": "Key Features",
+      "realtime": "Real-time Processing",
+      "accuracy": "High Accuracy",
+      "multiple": "Multiple Object Types",
+      "secure": "Secure & Private"
+    },
+    "technology": {
+      "title": "Technology Stack",
+      "ai": "AI & Machine Learning",
+      "computer_vision": "Computer Vision",
+      "deep_learning": "Deep Learning",
+      "neural_networks": "Neural Networks"
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Built by a team of passionate developers and AI researchers"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "retry": "Retry",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "language": "Language"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "Detection Summary",
+    "status": {
+      "critical": "CRITICAL",
+      "warning": "WARNING", 
+      "safe": "SAFE",
+      "unknown": "SCANNING"
+    },
+    "stats": {
+      "detected": "DETECTED",
+      "confidence": "CONFIDENCE"
+    },
+    "equipment": {
+      "title": "Safety Equipment",
+      "fireExtinguisher": "Fire Extinguisher",
+      "oxygenTank": "Oxygen Tank",
+      "toolbox": "Toolbox",
+      "present": "Present Equipment",
+      "missing": "Missing Equipment",
+      "additional": "Additional Objects",
+      "detected": "DETECTED",
+      "critical": "CRITICAL",
+      "optional": "OPTIONAL"
+    },
+    "system": {
+      "status": "SYSTEM_STATUS"
+    },
+    "recommendations": {
+      "title": "Critical Alert",
+      "criticalMissing": "{{count}} critical safety equipment missing. Immediate action required."
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "Fire extinguisher detected with {{confidence}}% confidence",
+    "oxygenTankDetected": "Oxygen tank detected with {{confidence}}% confidence",
+    "emergencyKitDetected": "Emergency kit detected with {{confidence}}% confidence",
+    "objectDetected": "{{object}} detected with {{confidence}}% confidence",
+    "noObjectsDetected": "No objects detected in the image",
+    "multipleObjectsDetected": "{{count}} objects detected",
+    "warningFireExtinguisherMissing": "Warning! Fire extinguisher missing from expected location",
+    "warningOxygenLevelLow": "Warning! Oxygen tank level appears low",
+    "detectionComplete": "Detection scan complete",
+    "detectionStarted": "Starting object detection scan",
+    "detectionFailed": "Detection scan failed. Please try again",
+    "audioEnabled": "Audio announcements enabled",
+    "audioDisabled": "Audio announcements disabled"
+  }
+}

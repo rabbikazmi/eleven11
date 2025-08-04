@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "INICIO",
+    "detection": "DETECCIÓN",
+    "about": "ACERCA DE",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "Sistema Avanzado de Detección de Objetos",
+    "description": "Plataforma de detección y análisis de objetos de nueva generación impulsada por IA",
+    "features": {
+      "realtime": "Detección en Tiempo Real",
+      "realtimeDesc": "Detección y clasificación instantánea de objetos",
+      "advanced": "IA Avanzada",
+      "advancedDesc": "Modelos de aprendizaje automático de vanguardia",
+      "security": "Procesamiento Seguro",
+      "securityDesc": "Seguridad y privacidad de nivel empresarial",
+      "fast": "Velocidad Relámpago",
+      "fastDesc": "Optimizado para velocidad y precisión"
+    },
+    "buttons": {
+      "getStarted": "Comenzar",
+      "learnMore": "Saber Más",
+      "startDetection": "Iniciar Detección"
+    },
+    "stats": {
+      "accuracy": "Precisión",
+      "speed": "Velocidad de Procesamiento",
+      "supported": "Objetos Soportados"
+    }
+  },
+  "detection": {
+    "title": "Detección de Objetos",
+    "subtitle": "Sube una imagen o usa tu cámara para detectar objetos",
+    "status": {
+      "ready": "LISTO",
+      "initializing": "INICIALIZANDO",
+      "loading_models": "CARGANDO MODELOS",
+      "calibrating": "CALIBRANDO",
+      "scanning": "ESCANEANDO",
+      "processing": "PROCESANDO"
+    },
+    "upload": {
+      "title": "Subir Imagen",
+      "dragDrop": "Arrastra y suelta una imagen aquí",
+      "or": "o",
+      "browse": "Examinar Archivos",
+      "camera": "Usar Cámara",
+      "formats": "Formatos soportados: JPG, PNG, WEBP"
+    },
+    "camera": {
+      "capture": "Capturar Foto",
+      "close": "Cerrar Cámara",
+      "retake": "Tomar Otra Foto"
+    },
+    "results": {
+      "title": "Resultados de Detección",
+      "detected": "Objetos Detectados",
+      "confidence": "Confianza",
+      "coordinates": "Coordenadas",
+      "noObjects": "No se detectaron objetos",
+      "error": "Detección fallida",
+      "download": "Descargar Resultados"
+    },
+    "errors": {
+      "uploadFailed": "Error al subir imagen",
+      "detectionFailed": "Detección fallida",
+      "invalidFormat": "Formato de imagen inválido",
+      "cameraError": "Acceso a cámara denegado",
+      "networkError": "Error de red ocurrido"
+    },
+    "scanning": {
+      "progress": "Progreso de Escaneo",
+      "analyzing": "Analizando imagen...",
+      "complete": "Escaneo Completo"
+    }
+  },
+  "about": {
+    "title": "Acerca de ELEVEN11",
+    "subtitle": "Tecnología Avanzada de Detección de Objetos",
+    "description": "ELEVEN11 es un sistema de detección de objetos de vanguardia impulsado por algoritmos de inteligencia artificial y aprendizaje automático de última generación.",
+    "features": {
+      "title": "Características Principales",
+      "realtime": "Procesamiento en Tiempo Real",
+      "accuracy": "Alta Precisión",
+      "multiple": "Múltiples Tipos de Objetos",
+      "secure": "Seguro y Privado"
+    },
+    "technology": {
+      "title": "Stack Tecnológico",
+      "ai": "IA y Aprendizaje Automático",
+      "computer_vision": "Visión por Computadora",
+      "deep_learning": "Aprendizaje Profundo",
+      "neural_networks": "Redes Neuronales"
+    },
+    "team": {
+      "title": "Nuestro Equipo",
+      "description": "Creado por un equipo de desarrolladores apasionados e investigadores de IA"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "download": "Descargar",
+    "upload": "Subir",
+    "retry": "Reintentar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "language": "Idioma"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "Resumen de Detección",
+    "status": {
+      "critical": "CRÍTICO",
+      "warning": "ADVERTENCIA", 
+      "safe": "SEGURO",
+      "unknown": "ESCANEANDO"
+    },
+    "stats": {
+      "detected": "DETECTADO",
+      "confidence": "CONFIANZA"
+    },
+    "equipment": {
+      "title": "Equipo de Seguridad",
+      "fireExtinguisher": "Extintor",
+      "oxygenTank": "Tanque de Oxígeno",
+      "toolbox": "Caja de Herramientas",
+      "present": "Equipo Presente",
+      "missing": "Equipo Faltante",
+      "additional": "Objetos Adicionales",
+      "detected": "DETECTADO",
+      "critical": "CRÍTICO",
+      "optional": "OPCIONAL"
+    },
+    "system": {
+      "status": "ESTADO_SISTEMA"
+    },
+    "recommendations": {
+      "title": "Alerta Crítica",
+      "criticalMissing": "{{count}} equipo de seguridad crítico faltante. Se requiere acción inmediata."
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "Extintor detectado con {{confidence}}% de confianza",
+    "oxygenTankDetected": "Tanque de oxígeno detectado con {{confidence}}% de confianza",
+    "emergencyKitDetected": "Kit de emergencia detectado con {{confidence}}% de confianza",
+    "objectDetected": "{{object}} detectado con {{confidence}}% de confianza",
+    "noObjectsDetected": "No se detectaron objetos en la imagen",
+    "multipleObjectsDetected": "{{count}} objetos detectados",
+    "warningFireExtinguisherMissing": "¡Advertencia! Extintor faltante en la ubicación esperada",
+    "warningOxygenLevelLow": "¡Advertencia! El nivel del tanque de oxígeno parece bajo",
+    "detectionComplete": "Escaneo de detección completo",
+    "detectionStarted": "Iniciando escaneo de detección de objetos",
+    "detectionFailed": "Escaneo de detección falló. Por favor intente de nuevo",
+    "audioEnabled": "Anuncios de audio habilitados",
+    "audioDisabled": "Anuncios de audio deshabilitados"
+  }
+}

@@ -1,6 +1,10 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Upload, Camera, X, Download, AlertCircle, CheckCircle, Loader2, ZoomIn, Activity, Terminal, Scan } from 'lucide-react';
 import Webcam from 'react-webcam';
+import useTTS from '../hooks/useTTS';
+import AudioControl from '../components/AudioControl';
+import DetectionSummaryPanel from '../components/DetectionSummaryPanel';
 
 const Detection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -11,16 +15,23 @@ const Detection = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [scanProgress, setScanProgress] = useState(0);
   const [systemStatus, setSystemStatus] = useState('READY');
+  const [audioEnabled, setAudioEnabled] = useState(true);
+  const [isRealTimeDetection, setIsRealTimeDetection] = useState(false);
+  const [realtimeDetections, setRealtimeDetections] = useState([]);
+  const { t } = useTranslation();
+  const { announceDetection, announceStatus, announceWarning, isSupported, isSpeaking } = useTTS();
   
   const fileInputRef = useRef(null);
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const webcamCanvasRef = useRef(null);
+  const detectionIntervalRef = useRef(null);
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
   useEffect(() => {
     // Simulate system initialization
-    const initSequence = ['INITIALIZING', 'LOADING_MODELS', 'CALIBRATING', 'READY'];
+    const initSequence = [t('detection.status.initializing'), t('detection.status.loading_models'), t('detection.status.calibrating'), t('detection.status.ready')];
     let currentStep = 0;
     
     const initInterval = setInterval(() => {
@@ -33,7 +44,7 @@ const Detection = () => {
     }, 800);
 
     return () => clearInterval(initInterval);
-  }, []);
+  }, [t]);
 
   // Redraw canvas when detection results change
   useEffect(() => {
@@ -83,13 +94,21 @@ const Detection = () => {
   const performDetection = async () => {
     if (!selectedImage) {
       setError('Please select an image first');
+      if (audioEnabled) {
+        announceWarning('detection.errors.uploadFailed');
+      }
       return;
     }
 
     setIsLoading(true);
     setError(null);
-    setSystemStatus('ANALYZING');
+    setSystemStatus(t('detection.status.processing'));
     setScanProgress(0);
+
+    // Announce detection start
+    if (audioEnabled) {
+      announceStatus('tts.detectionStarted');
+    }
 
     // Simulate scan progress
     const progressInterval = setInterval(() => {
@@ -119,7 +138,23 @@ const Detection = () => {
       console.log('Detection results:', results); // Debug log
       setDetectionResults(results);
       setScanProgress(100);
-      setSystemStatus('ANALYSIS_COMPLETE');
+      setSystemStatus(t('detection.scanning.complete'));
+      
+      // Announce detection results
+      if (audioEnabled) {
+        announceDetection(results);
+        
+        // Additional announcements for specific scenarios
+        if (results.detections && results.detections.length === 0) {
+          setTimeout(() => {
+            announceStatus('tts.noObjectsDetected');
+          }, 1000);
+        } else if (results.detections && results.detections.length > 0) {
+          setTimeout(() => {
+            announceStatus('tts.detectionComplete');
+          }, 2000);
+        }
+      }
       
       // Draw bounding boxes on canvas if detections found
       if (results.detections && results.detections.length > 0) {
@@ -132,8 +167,13 @@ const Detection = () => {
       
     } catch (err) {
       setError(err.message);
-      setSystemStatus('ERROR');
+      setSystemStatus(t('common.error'));
       console.error('Detection error:', err);
+      
+      // Announce error
+      if (audioEnabled) {
+        announceWarning('tts.detectionFailed');
+      }
     } finally {
       setIsLoading(false);
       clearInterval(progressInterval);
@@ -312,6 +352,211 @@ const Detection = () => {
     }
   };
 
+  // Real-time detection functions
+  const startRealTimeDetection = () => {
+    if (!webcamRef.current) {
+      setError('Webcam not available');
+      return;
+    }
+    
+    setIsRealTimeDetection(true);
+    setSystemStatus('REAL_TIME_SCANNING');
+    setError(null); // Clear any previous errors
+    
+    // Start immediately and then repeat
+    detectFromWebcam();
+    
+    detectionIntervalRef.current = setInterval(async () => {
+      if (webcamRef.current && !isLoading) {
+        await detectFromWebcam();
+      }
+    }, 1500); // Detect every 1.5 seconds for better performance
+  };
+
+  const stopRealTimeDetection = () => {
+    setIsRealTimeDetection(false);
+    setRealtimeDetections([]);
+    setSystemStatus('READY');
+    
+    if (detectionIntervalRef.current) {
+      clearInterval(detectionIntervalRef.current);
+      detectionIntervalRef.current = null;
+    }
+    
+    // Clear the webcam canvas
+    if (webcamCanvasRef.current) {
+      const ctx = webcamCanvasRef.current.getContext('2d');
+      ctx.clearRect(0, 0, webcamCanvasRef.current.width, webcamCanvasRef.current.height);
+    }
+  };
+
+  const detectFromWebcam = async () => {
+    try {
+      const imageSrc = webcamRef.current?.getScreenshot();
+      if (!imageSrc) return;
+
+      // Convert base64 to blob
+      const base64Response = await fetch(imageSrc);
+      const blob = await base64Response.blob();
+      
+      const formData = new FormData();
+      formData.append('image', blob, 'webcam-frame.jpg'); // Changed from 'file' to 'image'
+
+      const response = await fetch(`${BACKEND_URL}/detect`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Real-time detection result:', result); // Debug log
+        setRealtimeDetections(result.detections || []);
+        drawWebcamBoundingBoxes(result.detections || []);
+        
+        // Update detection summary with real-time results
+        setDetectionResults(result);
+        
+        // Announce new detections (but less frequently to avoid spam)
+        if (result.detections && result.detections.length > 0 && audioEnabled && !isSpeaking()) {
+          // Only announce if there are new detections (different count or different objects)
+          const currentDetectionCount = result.detections.length;
+          const previousDetectionCount = realtimeDetections.length;
+          
+          // Only announce if detection count increased (new objects detected)
+          if (currentDetectionCount > previousDetectionCount) {
+            // Only announce the new detections, not all of them
+            const newDetections = result.detections.slice(previousDetectionCount);
+            if (newDetections.length > 0) {
+              // Create a simple result object for the announcement
+              const newDetectionResult = {
+                detections: newDetections
+              };
+              announceDetection(newDetectionResult);
+            }
+          }
+        }
+      } else {
+        console.error('Detection API error:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Real-time detection error:', error);
+      // Optionally show error to user for debugging
+      setError(`Real-time detection failed: ${error.message}`);
+    }
+  };
+
+  const drawWebcamBoundingBoxes = (detections) => {
+    const canvas = webcamCanvasRef.current;
+    const webcam = webcamRef.current?.video;
+    
+    if (!canvas || !webcam) {
+      console.log('Canvas or webcam not available for drawing');
+      return;
+    }
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Get the display size of the video element
+    const videoRect = webcam.getBoundingClientRect();
+    const displayWidth = webcam.offsetWidth;
+    const displayHeight = webcam.offsetHeight;
+    
+    // Set canvas size to match the displayed video size
+    canvas.width = displayWidth;
+    canvas.height = displayHeight;
+    
+    // Clear previous drawings
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    console.log('Drawing webcam detections:', detections.length, 'Canvas size:', canvas.width, 'x', canvas.height);
+    
+    // Draw bounding boxes
+    detections.forEach((detection, index) => {
+      const { bbox, class_name, confidence } = detection;
+      
+      if (!bbox || bbox.length !== 4) {
+        console.error('Invalid bbox format:', bbox);
+        return;
+      }
+      
+      const [x, y, width, height] = bbox;
+      
+      // The bbox coordinates come from the backend based on the original image size
+      // We need to scale them to match the canvas display size
+      // Assuming the backend processes at 640x480 or the video's natural resolution
+      const naturalWidth = webcam.videoWidth || 640;
+      const naturalHeight = webcam.videoHeight || 480;
+      
+      const scaleX = canvas.width / naturalWidth;
+      const scaleY = canvas.height / naturalHeight;
+      
+      const scaledX = x * scaleX;
+      const scaledY = y * scaleY;
+      const scaledWidth = width * scaleX;
+      const scaledHeight = height * scaleY;
+      
+      console.log(`Detection ${index}: ${class_name} at (${scaledX.toFixed(1)}, ${scaledY.toFixed(1)}) size (${scaledWidth.toFixed(1)}x${scaledHeight.toFixed(1)})`);
+      
+      // Set colors based on object type
+      let color = '#00ff00'; // Default green
+      if (class_name.toLowerCase().includes('fire')) color = '#ff0000'; // Red for fire extinguisher
+      if (class_name.toLowerCase().includes('oxygen')) color = '#0099ff'; // Blue for oxygen
+      if (class_name.toLowerCase().includes('toolbox')) color = '#ffaa00'; // Orange for toolbox
+      
+      // Draw bounding box with thicker lines for visibility
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4;
+      ctx.strokeRect(scaledX, scaledY, scaledWidth, scaledHeight);
+      
+      // Draw semi-transparent fill
+      ctx.fillStyle = color + '20'; // Add transparency
+      ctx.fillRect(scaledX, scaledY, scaledWidth, scaledHeight);
+      
+      // Draw label background
+      const label = `${class_name.toUpperCase()} ${(confidence * 100).toFixed(1)}%`;
+      ctx.font = 'bold 18px monospace';
+      const labelMetrics = ctx.measureText(label);
+      const labelWidth = labelMetrics.width + 16;
+      const labelHeight = 28;
+      
+      // Position label above the box, but below if it would go off-screen
+      let labelX = scaledX;
+      let labelY = scaledY - 8;
+      
+      if (labelY - labelHeight < 0) {
+        labelY = scaledY + scaledHeight + labelHeight;
+      }
+      
+      if (labelX + labelWidth > canvas.width) {
+        labelX = canvas.width - labelWidth - 5;
+      }
+      
+      // Draw label background
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+      ctx.fillRect(labelX, labelY - labelHeight, labelWidth, labelHeight);
+      
+      // Draw label border
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(labelX, labelY - labelHeight, labelWidth, labelHeight);
+      
+      // Draw label text
+      ctx.fillStyle = color;
+      ctx.fillText(label, labelX + 8, labelY - 8);
+    });
+    
+    console.log('Finished drawing webcam bounding boxes');
+  };
+
+  // Cleanup on component unmount
+  React.useEffect(() => {
+    return () => {
+      if (detectionIntervalRef.current) {
+        clearInterval(detectionIntervalRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-black pt-20 pb-12 relative overflow-hidden">
       {/* Background Effects */}
@@ -327,27 +572,39 @@ const Detection = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl lg:text-7xl font-black mb-6 text-white font-mono tracking-tight">
-            DETECTION_TERMINAL
+            {t('detection.title')}
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto font-mono">
-            Neural network analysis for critical space station safety equipment identification
+            {t('detection.subtitle')}
           </p>
           
-          {/* System Status */}
-          <div className="mt-8 inline-flex items-center px-6 py-3 bg-gray-900/50 border border-gray-700 backdrop-blur-xl font-mono text-sm">
-            <div className={`w-2 h-2 rounded-full mr-3 ${systemStatus === 'ERROR' ? 'bg-red-400' : 'bg-green-400'} animate-pulse`}></div>
-            <span className="text-gray-300">SYSTEM_STATUS: </span>
-            <span className="text-white ml-2">{systemStatus}</span>
+          {/* Controls Section */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* System Status */}
+            <div className="inline-flex items-center px-6 py-3 bg-gray-900/50 border border-gray-700 backdrop-blur-xl font-mono text-sm">
+              <div className={`w-2 h-2 rounded-full mr-3 ${systemStatus === t('common.error') ? 'bg-red-400' : 'bg-green-400'} animate-pulse`}></div>
+              <span className="text-gray-300">{t('detection.status.ready')}: </span>
+              <span className="text-white ml-2">{systemStatus}</span>
+            </div>
+            
+            {/* Audio Control */}
+            {isSupported() && (
+              <AudioControl 
+                onToggle={setAudioEnabled}
+                className="font-mono text-sm"
+              />
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Input Section */}
           <div className="lg:col-span-1 space-y-6">
+            
             <div className="bg-gray-900/20 backdrop-blur-sm border border-gray-800 p-6">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center font-mono">
                 <Terminal className="w-6 h-6 mr-3 text-gray-400" />
-                INPUT_MODULE
+                {t('detection.upload.title')}
               </h2>
 
               {/* Upload Button - Less Colorful, Industrial */}
@@ -358,8 +615,8 @@ const Detection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-700/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <div className="relative z-10">
                   <Upload className="w-12 h-12 mx-auto mb-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                  <p className="text-white font-semibold mb-2 font-mono">UPLOAD_IMAGE</p>
-                  <p className="text-gray-500 text-sm font-mono">SELECT FILE OR DRAG & DROP</p>
+                  <p className="text-white font-semibold mb-2 font-mono">{t('detection.upload.title')}</p>
+                  <p className="text-gray-500 text-sm font-mono">{t('detection.upload.dragDrop')}</p>
                 </div>
               </button>
               
@@ -379,8 +636,8 @@ const Detection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-700/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 <div className="relative z-10">
                   <Camera className="w-12 h-12 mx-auto mb-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
-                  <p className="text-white font-semibold mb-2 font-mono">CAMERA_MODULE</p>
-                  <p className="text-gray-500 text-sm font-mono">CAPTURE LIVE IMAGE</p>
+                  <p className="text-white font-semibold mb-2 font-mono">{t('detection.upload.camera')}</p>
+                  <p className="text-gray-500 text-sm font-mono">{t('detection.camera.capture')}</p>
                 </div>
               </button>
 
@@ -397,12 +654,12 @@ const Detection = () => {
                   {isLoading ? (
                     <>
                       <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                      ANALYZING...
+                      {t('detection.status.processing')}...
                     </>
                   ) : (
                     <>
                       <Scan className="w-5 h-5 mr-2 group-hover:text-white transition-colors" />
-                      <span className="group-hover:text-white transition-colors">INITIALIZE_SCAN</span>
+                      <span className="group-hover:text-white transition-colors">{t('home.buttons.startDetection')}</span>
                     </>
                   )}
                 </div>
@@ -412,7 +669,7 @@ const Detection = () => {
               {isLoading && (
                 <div className="mt-4">
                   <div className="flex justify-between mb-2 font-mono text-sm">
-                    <span className="text-gray-400">PROGRESS</span>
+                    <span className="text-gray-400">{t('detection.scanning.progress')}</span>
                     <span className="text-white">{Math.round(scanProgress)}%</span>
                   </div>
                   <div className="w-full bg-gray-800 h-2">
@@ -431,7 +688,7 @@ const Detection = () => {
                   className="w-full mt-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 transition-all duration-300 flex items-center justify-center font-mono"
                 >
                   <X className="w-5 h-5 mr-2" />
-                  RESET_SYSTEM
+                  {t('common.cancel')}
                 </button>
               )}
             </div>
@@ -442,7 +699,7 @@ const Detection = () => {
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold text-white flex items-center font-mono">
                     <CheckCircle className="w-5 h-5 mr-2 text-green-400" />
-                    ANALYSIS_RESULTS
+                    {t('detection.results.title')}
                   </h3>
                   <button
                     onClick={downloadResults}
@@ -501,16 +758,65 @@ const Detection = () => {
               {/* Camera View */}
               {showCamera && (
                 <div className="relative mb-6">
-                  <Webcam
-                    ref={webcamRef}
-                    screenshotFormat="image/jpeg"
-                    className="w-full"
-                    videoConstraints={{
-                      width: 1280,
-                      height: 720,
-                      facingMode: "user"
-                    }}
-                  />
+                  <div className="relative">
+                    <Webcam
+                      ref={webcamRef}
+                      screenshotFormat="image/jpeg"
+                      className="w-full"
+                      videoConstraints={{
+                        width: 1280,
+                        height: 720,
+                        facingMode: "user"
+                      }}
+                    />
+                    {/* Canvas overlay for bounding boxes */}
+                    <canvas
+                      ref={webcamCanvasRef}
+                      className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                      style={{ zIndex: 10 }}
+                    />
+                  </div>
+                  
+                  {/* Real-time detection controls */}
+                  <div className="absolute top-4 right-4 flex space-x-2">
+                    {!isRealTimeDetection ? (
+                      <button
+                        onClick={startRealTimeDetection}
+                        className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded font-mono text-sm"
+                      >
+                        START LIVE DETECTION
+                      </button>
+                    ) : (
+                      <button
+                        onClick={stopRealTimeDetection}
+                        className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded font-mono text-sm animate-pulse"
+                      >
+                        STOP LIVE DETECTION
+                      </button>
+                    )}
+                  </div>
+                  
+                  {/* Real-time detection status */}
+                  {isRealTimeDetection && (
+                    <div className="absolute top-4 left-4 bg-red-600/80 text-white px-3 py-1 rounded font-mono text-sm animate-pulse">
+                      ● LIVE DETECTION ACTIVE
+                    </div>
+                  )}
+                  
+                  {/* Live detection stats */}
+                  {isRealTimeDetection && (
+                    <div className="absolute top-16 left-4 bg-black/80 text-green-400 px-3 py-1 rounded font-mono text-xs">
+                      LIVE DETECTIONS: {realtimeDetections.length}
+                    </div>
+                  )}
+                  
+                  {/* API Status indicator */}
+                  {isRealTimeDetection && (
+                    <div className="absolute top-28 left-4 bg-black/80 text-blue-400 px-3 py-1 rounded font-mono text-xs">
+                      API: {BACKEND_URL}
+                    </div>
+                  )}
+                  
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
                     <button
                       onClick={captureImage}
@@ -520,7 +826,10 @@ const Detection = () => {
                       CAPTURE
                     </button>
                     <button
-                      onClick={() => setShowCamera(false)}
+                      onClick={() => {
+                        stopRealTimeDetection();
+                        setShowCamera(false);
+                      }}
                       className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 transition-all duration-300 font-mono"
                     >
                       <X className="w-5 h-5 mr-2 inline" />
@@ -614,6 +923,12 @@ const Detection = () => {
             </div>
           </div>
         </div>
+
+        {/* Detection Summary Panel - Below Viewport */}
+        <DetectionSummaryPanel 
+          detectionResults={detectionResults}
+          systemStatus={systemStatus}
+        />
       </div>
     </div>
   );

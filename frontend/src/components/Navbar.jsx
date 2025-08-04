@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Menu, X, Zap, Terminal } from 'lucide-react';
+import LanguageSelector from './LanguageSelector';
+import AudioControl from './AudioControl';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { name: 'HOME', path: '/' },
-    { name: 'DETECTION', path: '/detection' },
-    { name: 'ABOUT', path: '/about' }
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.detection'), path: '/detection' },
+    { name: t('nav.about'), path: '/about' }
   ];
 
   return (
@@ -23,7 +27,7 @@ const Navbar = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-2xl font-bold text-white font-mono tracking-tight">
-                ELEVEN11
+                {t('nav.title')}
               </h1>
             </div>
           </Link>
@@ -46,6 +50,12 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
+            
+            {/* Audio Control */}
+            <AudioControl />
+            
+            {/* Language Selector */}
+            <LanguageSelector />
           </div>
 
           {/* Mobile menu button */}
@@ -77,6 +87,16 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Audio Control */}
+              <div className="px-4 pt-3">
+                <AudioControl />
+              </div>
+              
+              {/* Mobile Language Selector */}
+              <div className="px-4 pt-3">
+                <LanguageSelector />
+              </div>
             </div>
           </div>
         )}

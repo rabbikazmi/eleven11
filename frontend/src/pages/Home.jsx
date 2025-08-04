@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Upload, Camera, ArrowDown, Zap, Shield, Brain, Rocket, Activity, Target, Scan } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Upload, Camera, ArrowDown, Zap, Shield, Brain, Rocket, Activity, Target, Scan, Globe, Volume2, Eye, BarChart3, Mic, Video, Languages, MessageSquare } from 'lucide-react';
 import Scene3D from '../components/Scene3D';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [glitchActive, setGlitchActive] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsVisible(true);
@@ -117,9 +119,9 @@ const Home = () => {
               {/* Subtitle */}
               <div className="relative">
                 <p className="text-lg lg:text-xl xl:text-2xl text-gray-400 leading-relaxed max-w-2xl font-mono">
-                  <span className="text-gray-200">Advanced AI detection</span> for critical space station equipment.
+                  <span className="text-gray-200">{t('home.subtitle')}</span> {t('home.description')}.
                   <br />
-                  <span className="text-white font-semibold">Real-time identification</span> powered by neural networks.
+                  <span className="text-white font-semibold">{t('home.features.realtime')}</span> powered by neural networks.
                 </p>
                 
                 {/* Typing Cursor Effect */}
@@ -129,9 +131,9 @@ const Home = () => {
               {/* Tech Specs Pills */}
               <div className="flex flex-wrap gap-3">
                 {[
-                  { icon: Activity, text: 'Neural Engine', color: 'border-gray-700 text-gray-300' },
-                  { icon: Target, text: '98.01% Precision', color: 'border-gray-700 text-gray-300' },
-                  { icon: Scan, text: 'Real-time Scan', color: 'border-gray-700 text-gray-300' }
+                  { icon: Activity, text: t('home.features.advanced'), color: 'border-gray-700 text-gray-300' },
+                  { icon: Target, text: t('home.stats.accuracy'), color: 'border-gray-700 text-gray-300' },
+                  { icon: Scan, text: t('home.features.realtime'), color: 'border-gray-700 text-gray-300' }
                 ].map((feature, index) => (
                   <div key={index} className={`inline-flex items-center px-3 lg:px-4 py-2 bg-gray-900/30 border ${feature.color} backdrop-blur-sm rounded-lg font-mono text-xs lg:text-sm hover:bg-gray-800/50 transition-all duration-300`}>
                     <feature.icon className="w-3 h-3 lg:w-4 lg:h-4 mr-2" />
@@ -148,7 +150,7 @@ const Home = () => {
                 >
                   <div className="absolute inset-0 bg-gray-900 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
                   <Upload className="w-5 h-5 lg:w-6 lg:h-6 mr-3 relative z-10 transform transition-transform duration-300 group-hover:scale-110" />
-                  <span className="relative z-10 font-mono">UPLOAD_IMAGE</span>
+                  <span className="relative z-10 font-mono">{t('home.buttons.getStarted')}</span>
                 </Link>
                 
                 <Link
@@ -156,7 +158,7 @@ const Home = () => {
                   className="group relative inline-flex items-center justify-center px-6 lg:px-8 py-3 lg:py-4 bg-transparent border-2 border-gray-700 text-gray-300 font-bold text-base lg:text-lg rounded-none hover:border-white hover:text-white transition-all duration-300"
                 >
                   <Camera className="w-5 h-5 lg:w-6 lg:h-6 mr-3 transform transition-transform duration-300 group-hover:rotate-12" />
-                  <span className="font-mono">CAMERA_CAPTURE</span>
+                  <span className="font-mono">{t('detection.camera.capture')}</span>
                 </Link>
               </div>
             </div>
@@ -208,12 +210,12 @@ const Home = () => {
           
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-6xl font-bold mb-6 text-white font-mono tracking-tight">
-              DETECTION_SYSTEM.EXE
+              {t('detection.title')}
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto font-mono">
-              Neural network powered identification system for critical space safety equipment.
+              {t('home.description')}
               <br />
-              <span className="text-gray-200">Real-time analysis</span> with advanced computer vision.
+              <span className="text-gray-200">{t('home.features.realtime')}</span> with advanced computer vision.
             </p>
           </div>
 
@@ -222,20 +224,20 @@ const Home = () => {
             {[
               {
                 icon: Shield,
-                title: 'FIRE_EXTINGUISHER',
-                description: 'Neural identification of fire safety systems with precise coordinate mapping and confidence scoring.',
+                title: t('home.features.security'),
+                description: t('home.features.securityDesc'),
                 gradient: 'from-gray-800 to-gray-900'
               },
               {
                 icon: Brain,
-                title: 'OXYGEN_SYSTEMS',
-                description: 'Advanced detection of life-support oxygen distribution systems using deep learning algorithms.',
+                title: t('home.features.advanced'),
+                description: t('home.features.advancedDesc'),
                 gradient: 'from-gray-800 to-gray-900'
               },
               {
                 icon: Rocket,
-                title: 'EMERGENCY_TOOLKIT',
-                description: 'Real-time scanning for critical maintenance and emergency response equipment.',
+                title: t('home.features.fast'),
+                description: t('home.features.fastDesc'),
                 gradient: 'from-gray-800 to-gray-900'
               }
             ].map((feature, index) => (
@@ -256,6 +258,144 @@ const Home = () => {
             ))}
           </div>
 
+          {/* NEW ADVANCED FEATURES SHOWCASE */}
+          <div className="mb-20">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center px-6 py-3 bg-gray-900/50 border border-gray-700 backdrop-blur-xl font-mono text-sm mb-6">
+                <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                <span className="text-gray-300">ADVANCED_FEATURES_2025</span>
+              </div>
+              <h3 className="text-3xl lg:text-5xl font-bold text-white font-mono tracking-tight mb-4">
+                NEXT-GEN CAPABILITIES
+              </h3>
+              <p className="text-lg text-gray-400 max-w-2xl mx-auto font-mono">
+                Experience cutting-edge AI features with multilingual support, real-time detection, and intelligent automation
+              </p>
+            </div>
+
+            {/* Advanced Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: Globe,
+                  title: "MULTILINGUAL_AI",
+                  description: "Support for 8 major world languages with automatic detection and RTL layout support",
+                  status: "ACTIVE",
+                  color: "green"
+                },
+                {
+                  icon: Volume2,
+                  title: "VOICE_SYNTHESIS",
+                  description: "Real-time audio announcements with Web Speech API and multilingual TTS capabilities",
+                  status: "ACTIVE", 
+                  color: "blue"
+                },
+                {
+                  icon: Video,
+                  title: "LIVE_DETECTION",
+                  description: "Real-time webcam object detection with live bounding boxes and instant feedback",
+                  status: "ACTIVE",
+                  color: "red"
+                },
+                {
+                  icon: BarChart3,
+                  title: "SMART_ANALYTICS",
+                  description: "Intelligent detection summary with safety equipment tracking and status monitoring",
+                  status: "ACTIVE",
+                  color: "orange"
+                },
+                {
+                  icon: Eye,
+                  title: "VISUAL_OVERLAY",
+                  description: "Advanced canvas-based bounding box rendering with color-coded object classification",
+                  status: "ACTIVE",
+                  color: "purple"
+                },
+                {
+                  icon: MessageSquare,
+                  title: "I18N_FRAMEWORK",
+                  description: "Complete internationalization with browser language detection and seamless switching",
+                  status: "ACTIVE",
+                  color: "cyan"
+                },
+                {
+                  icon: Target,
+                  title: "PRECISION_MODE",
+                  description: "High-accuracy detection with confidence scoring and false-positive reduction",
+                  status: "ACTIVE",
+                  color: "yellow"
+                },
+                {
+                  icon: Activity,
+                  title: "NEURAL_PIPELINE",
+                  description: "Optimized YOLOv8 inference with real-time processing and memory management",
+                  status: "ACTIVE",
+                  color: "pink"
+                }
+              ].map((feature, index) => (
+                <div key={index} className="group relative bg-gray-900/30 backdrop-blur-sm border border-gray-800 p-6 hover:bg-gray-800/40 hover:border-gray-600 transition-all duration-300 transform hover:scale-105">
+                  {/* Status Indicator */}
+                  <div className={`absolute top-4 right-4 w-2 h-2 rounded-full animate-pulse ${
+                    feature.color === 'green' ? 'bg-green-400' :
+                    feature.color === 'blue' ? 'bg-blue-400' :
+                    feature.color === 'red' ? 'bg-red-400' :
+                    feature.color === 'orange' ? 'bg-orange-400' :
+                    feature.color === 'purple' ? 'bg-purple-400' :
+                    feature.color === 'cyan' ? 'bg-cyan-400' :
+                    feature.color === 'yellow' ? 'bg-yellow-400' :
+                    'bg-pink-400'
+                  }`}></div>
+                  
+                  {/* Icon */}
+                  <div className={`w-12 h-12 border border-gray-700 flex items-center justify-center mb-4 transform transition-all duration-300 group-hover:scale-110 ${
+                    feature.color === 'green' ? 'bg-green-900/20 group-hover:bg-green-800/30' :
+                    feature.color === 'blue' ? 'bg-blue-900/20 group-hover:bg-blue-800/30' :
+                    feature.color === 'red' ? 'bg-red-900/20 group-hover:bg-red-800/30' :
+                    feature.color === 'orange' ? 'bg-orange-900/20 group-hover:bg-orange-800/30' :
+                    feature.color === 'purple' ? 'bg-purple-900/20 group-hover:bg-purple-800/30' :
+                    feature.color === 'cyan' ? 'bg-cyan-900/20 group-hover:bg-cyan-800/30' :
+                    feature.color === 'yellow' ? 'bg-yellow-900/20 group-hover:bg-yellow-800/30' :
+                    'bg-pink-900/20 group-hover:bg-pink-800/30'
+                  }`}>
+                    <feature.icon className={`w-6 h-6 ${
+                      feature.color === 'green' ? 'text-green-400' :
+                      feature.color === 'blue' ? 'text-blue-400' :
+                      feature.color === 'red' ? 'text-red-400' :
+                      feature.color === 'orange' ? 'text-orange-400' :
+                      feature.color === 'purple' ? 'text-purple-400' :
+                      feature.color === 'cyan' ? 'text-cyan-400' :
+                      feature.color === 'yellow' ? 'text-yellow-400' :
+                      'text-pink-400'
+                    }`} />
+                  </div>
+                  
+                  {/* Content */}
+                  <h4 className="text-sm font-bold text-white mb-2 font-mono tracking-wider">
+                    {feature.title}
+                  </h4>
+                  <p className="text-xs text-gray-400 leading-relaxed font-mono mb-3">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Status Badge */}
+                  <div className={`inline-flex items-center px-2 py-1 text-xs font-mono border ${
+                    feature.color === 'green' ? 'text-green-400 border-green-600 bg-green-900/20' :
+                    feature.color === 'blue' ? 'text-blue-400 border-blue-600 bg-blue-900/20' :
+                    feature.color === 'red' ? 'text-red-400 border-red-600 bg-red-900/20' :
+                    feature.color === 'orange' ? 'text-orange-400 border-orange-600 bg-orange-900/20' :
+                    feature.color === 'purple' ? 'text-purple-400 border-purple-600 bg-purple-900/20' :
+                    feature.color === 'cyan' ? 'text-cyan-400 border-cyan-600 bg-cyan-900/20' :
+                    feature.color === 'yellow' ? 'text-yellow-400 border-yellow-600 bg-yellow-900/20' :
+                    'text-pink-400 border-pink-600 bg-pink-900/20'
+                  }`}>
+                    ● {feature.status}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* CTA Section */}
           <div className="text-center">
             <Link
@@ -263,7 +403,7 @@ const Home = () => {
               className="inline-flex items-center px-12 py-6 bg-white text-black font-bold text-xl rounded-none hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 font-mono"
             >
               <Zap className="w-6 h-6 mr-3" />
-              INITIALIZE_SCAN
+              {t('home.buttons.startDetection')}
             </Link>
           </div>
         </div>

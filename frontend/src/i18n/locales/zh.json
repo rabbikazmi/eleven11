@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "首页",
+    "detection": "检测",
+    "about": "关于",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "先进物体检测系统",
+    "description": "下一代AI驱动的物体检测和分析平台",
+    "features": {
+      "realtime": "实时检测",
+      "realtimeDesc": "即时物体检测和分类",
+      "advanced": "先进AI",
+      "advancedDesc": "最先进的机器学习模型",
+      "security": "安全处理",
+      "securityDesc": "企业级安全性和隐私保护",
+      "fast": "闪电快速",
+      "fastDesc": "为速度和准确性而优化"
+    },
+    "buttons": {
+      "getStarted": "开始使用",
+      "learnMore": "了解更多",
+      "startDetection": "开始检测"
+    },
+    "stats": {
+      "accuracy": "准确率",
+      "speed": "处理速度",
+      "supported": "支持的对象"
+    }
+  },
+  "detection": {
+    "title": "物体检测",
+    "subtitle": "上传图片或使用相机来检测物体",
+    "status": {
+      "ready": "就绪",
+      "initializing": "初始化中",
+      "loading_models": "加载模型中",
+      "calibrating": "校准中",
+      "scanning": "扫描中",
+      "processing": "处理中"
+    },
+    "upload": {
+      "title": "上传图片",
+      "dragDrop": "拖拽图片到这里",
+      "or": "或",
+      "browse": "浏览文件",
+      "camera": "使用相机",
+      "formats": "支持的格式：JPG、PNG、WEBP"
+    },
+    "camera": {
+      "capture": "拍照",
+      "close": "关闭相机",
+      "retake": "重新拍照"
+    },
+    "results": {
+      "title": "检测结果",
+      "detected": "检测到的物体",
+      "confidence": "置信度",
+      "coordinates": "坐标",
+      "noObjects": "未检测到物体",
+      "error": "检测失败",
+      "download": "下载结果"
+    },
+    "errors": {
+      "uploadFailed": "图片上传失败",
+      "detectionFailed": "检测失败",
+      "invalidFormat": "无效的图片格式",
+      "cameraError": "相机访问被拒绝",
+      "networkError": "网络错误"
+    },
+    "scanning": {
+      "progress": "扫描进度",
+      "analyzing": "正在分析图片...",
+      "complete": "扫描完成"
+    }
+  },
+  "about": {
+    "title": "关于ELEVEN11",
+    "subtitle": "先进物体检测技术",
+    "description": "ELEVEN11是一个由最先进的人工智能和机器学习算法驱动的尖端物体检测系统。",
+    "features": {
+      "title": "主要特性",
+      "realtime": "实时处理",
+      "accuracy": "高准确性",
+      "multiple": "多种物体类型",
+      "secure": "安全私密"
+    },
+    "technology": {
+      "title": "技术栈",
+      "ai": "AI和机器学习",
+      "computer_vision": "计算机视觉",
+      "deep_learning": "深度学习",
+      "neural_networks": "神经网络"
+    },
+    "team": {
+      "title": "我们的团队",
+      "description": "由充满激情的开发者和AI研究人员团队构建"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "view": "查看",
+    "download": "下载",
+    "upload": "上传",
+    "retry": "重试",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "language": "语言"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "检测摘要",
+    "status": {
+      "critical": "危急",
+      "warning": "警告", 
+      "safe": "安全",
+      "unknown": "扫描中"
+    },
+    "stats": {
+      "detected": "已检测",
+      "confidence": "置信度"
+    },
+    "equipment": {
+      "title": "安全设备",
+      "fireExtinguisher": "灭火器",
+      "oxygenTank": "氧气罐",
+      "toolbox": "工具箱",
+      "present": "现有设备",
+      "missing": "缺失设备",
+      "additional": "额外物品",
+      "detected": "已检测",
+      "critical": "关键",
+      "optional": "可选"
+    },
+    "system": {
+      "status": "系统状态"
+    },
+    "recommendations": {
+      "title": "紧急警报",
+      "criticalMissing": "{{count}} 关键安全设备缺失。需要立即行动。"
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "检测到灭火器，置信度{{confidence}}%",
+    "oxygenTankDetected": "检测到氧气瓶，置信度{{confidence}}%",
+    "emergencyKitDetected": "检测到应急包，置信度{{confidence}}%",
+    "objectDetected": "检测到{{object}}，置信度{{confidence}}%",
+    "noObjectsDetected": "图像中未检测到任何物体",
+    "multipleObjectsDetected": "检测到{{count}}个物体",
+    "warningFireExtinguisherMissing": "警告！预期位置缺少灭火器",
+    "warningOxygenLevelLow": "警告！氧气瓶水平似乎很低",
+    "detectionComplete": "检测扫描完成",
+    "detectionStarted": "开始物体检测扫描",
+    "detectionFailed": "检测扫描失败，请重试",
+    "audioEnabled": "音频播报已启用",
+    "audioDisabled": "音频播报已禁用"
+  }
+}

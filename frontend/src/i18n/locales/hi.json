@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "मुख्य पृष्ठ",
+    "detection": "पहचान",
+    "about": "हमारे बारे में",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "उन्नत वस्तु पहचान प्रणाली",
+    "description": "अगली पीढ़ी का AI-संचालित वस्तु पहचान और विश्लेषण प्लेटफॉर्म",
+    "features": {
+      "realtime": "रियल-टाइम पहचान",
+      "realtimeDesc": "तत्काल वस्तु पहचान और वर्गीकरण",
+      "advanced": "उन्नत AI",
+      "advancedDesc": "अत्याधुनिक मशीन लर्निंग मॉडल",
+      "security": "सुरक्षित प्रसंस्करण",
+      "securityDesc": "एंटरप्राइज़-ग्रेड सुरक्षा और गोपनीयता",
+      "fast": "बिजली की तेज़ी",
+      "fastDesc": "गति और सटीकता के लिए अनुकूलित"
+    },
+    "buttons": {
+      "getStarted": "शुरू करें",
+      "learnMore": "और जानें",
+      "startDetection": "पहचान शुरू करें"
+    },
+    "stats": {
+      "accuracy": "सटीकता",
+      "speed": "प्रसंस्करण गति",
+      "supported": "समर्थित वस्तुएं"
+    }
+  },
+  "detection": {
+    "title": "वस्तु पहचान",
+    "subtitle": "वस्तुओं की पहचान के लिए एक छवि अपलोड करें या अपना कैमरा उपयोग करें",
+    "status": {
+      "ready": "तैयार",
+      "initializing": "प्रारंभ कर रहे हैं",
+      "loading_models": "मॉडल लोड कर रहे हैं",
+      "calibrating": "कैलिब्रेट कर रहे हैं",
+      "scanning": "स्कैन कर रहे हैं",
+      "processing": "प्रसंस्करण कर रहे हैं"
+    },
+    "upload": {
+      "title": "छवि अपलोड करें",
+      "dragDrop": "यहाँ एक छवि खींचें और छोड़ें",
+      "or": "या",
+      "browse": "फाइलें ब्राउज़ करें",
+      "camera": "कैमरा उपयोग करें",
+      "formats": "समर्थित प्रारूप: JPG, PNG, WEBP"
+    },
+    "camera": {
+      "capture": "फोटो लें",
+      "close": "कैमरा बंद करें",
+      "retake": "फिर से फोटो लें"
+    },
+    "results": {
+      "title": "पहचान परिणाम",
+      "detected": "पहचानी गई वस्तुएं",
+      "confidence": "विश्वास",
+      "coordinates": "निर्देशांक",
+      "noObjects": "कोई वस्तु नहीं मिली",
+      "error": "पहचान असफल",
+      "download": "परिणाम डाउनलोड करें"
+    },
+    "errors": {
+      "uploadFailed": "छवि अपलोड करने में असफल",
+      "detectionFailed": "पहचान असफल",
+      "invalidFormat": "अमान्य छवि प्रारूप",
+      "cameraError": "कैमरा पहुंच से इनकार",
+      "networkError": "नेटवर्क त्रुटि हुई"
+    },
+    "scanning": {
+      "progress": "स्कैनिंग प्रगति",
+      "analyzing": "छवि का विश्लेषण कर रहे हैं...",
+      "complete": "स्कैन पूरा"
+    }
+  },
+  "about": {
+    "title": "ELEVEN11 के बारे में",
+    "subtitle": "उन्नत वस्तु पहचान तकनीक",
+    "description": "ELEVEN11 अत्याधुनिक कृत्रिम बुद्धिमत्ता और मशीन लर्निंग एल्गोरिदम द्वारा संचालित एक अत्याधुनिक वस्तु पहचान प्रणाली है।",
+    "features": {
+      "title": "मुख्य विशेषताएं",
+      "realtime": "रियल-टाइम प्रसंस्करण",
+      "accuracy": "उच्च सटीकता",
+      "multiple": "कई वस्तु प्रकार",
+      "secure": "सुरक्षित और निजी"
+    },
+    "technology": {
+      "title": "तकनीकी स्टैक",
+      "ai": "AI और मशीन लर्निंग",
+      "computer_vision": "कंप्यूटर विज़न",
+      "deep_learning": "डीप लर्निंग",
+      "neural_networks": "न्यूरल नेटवर्क"
+    },
+    "team": {
+      "title": "हमारी टीम",
+      "description": "भावुक डेवलपर्स और AI शोधकर्ताओं की टीम द्वारा निर्मित"
+    }
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफलता",
+    "cancel": "रद्द करें",
+    "confirm": "पुष्टि करें",
+    "close": "बंद करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "view": "देखें",
+    "download": "डाउनलोड",
+    "upload": "अपलोड",
+    "retry": "फिर से कोशिश करें",
+    "back": "वापस",
+    "next": "अगला",
+    "previous": "पिछला",
+    "search": "खोजें",
+    "filter": "फिल्टर",
+    "sort": "क्रमबद्ध करें",
+    "language": "भाषा"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "पहचान सारांश",
+    "status": {
+      "critical": "गंभीर",
+      "warning": "चेतावनी", 
+      "safe": "सुरक्षित",
+      "unknown": "स्कैनिंग"
+    },
+    "stats": {
+      "detected": "पहचाना गया",
+      "confidence": "विश्वास"
+    },
+    "equipment": {
+      "title": "सुरक्षा उपकरण",
+      "fireExtinguisher": "आग बुझाने का यंत्र",
+      "oxygenTank": "ऑक्सीजन टैंक",
+      "toolbox": "औजार का बक्सा",
+      "present": "उपस्थित उपकरण",
+      "missing": "गुमशुदा उपकरण",
+      "additional": "अतिरिक्त वस्तुएं",
+      "detected": "पहचाना गया",
+      "critical": "गंभीर",
+      "optional": "वैकल्पिक"
+    },
+    "system": {
+      "status": "सिस्टम स्थिति"
+    },
+    "recommendations": {
+      "title": "गंभीर अलर्ट",
+      "criticalMissing": "{{count}} महत्वपूर्ण सुरक्षा उपकरण गायब। तत्काल कार्रवाई आवश्यक।"
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "आग बुझाने का यंत्र {{confidence}}% विश्वास के साथ पाया गया",
+    "oxygenTankDetected": "ऑक्सीजन टैंक {{confidence}}% विश्वास के साथ पाया गया",
+    "emergencyKitDetected": "आपातकालीन किट {{confidence}}% विश्वास के साथ पाया गया",
+    "objectDetected": "{{object}} {{confidence}}% विश्वास के साथ पाया गया",
+    "noObjectsDetected": "छवि में कोई वस्तु नहीं मिली",
+    "multipleObjectsDetected": "{{count}} वस्तुएं पाई गईं",
+    "warningFireExtinguisherMissing": "चेतावनी! अपेक्षित स्थान से आग बुझाने का यंत्र गायब",
+    "warningOxygenLevelLow": "चेतावनी! ऑक्सीजन टैंक का स्तर कम लगता है",
+    "detectionComplete": "पहचान स्कैन पूरा हुआ",
+    "detectionStarted": "वस्तु पहचान स्कैन शुरू हो रहा है",
+    "detectionFailed": "पहचान स्कैन असफल। कृपया फिर से कोशिश करें",
+    "audioEnabled": "ऑडियो घोषणाएं सक्षम",
+    "audioDisabled": "ऑडियो घोषणाएं अक्षम"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "STARTSEITE",
+    "detection": "ERKENNUNG",
+    "about": "ÜBER UNS",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "Fortschrittliches Objekterkennungssystem",
+    "description": "KI-gestützte Objekterkennung und Analyseplattform der nächsten Generation",
+    "features": {
+      "realtime": "Echtzeit-Erkennung",
+      "realtimeDesc": "Sofortige Objekterkennung und -klassifikation",
+      "advanced": "Fortschrittliche KI",
+      "advancedDesc": "Modernste Machine-Learning-Modelle",
+      "security": "Sichere Verarbeitung",
+      "securityDesc": "Unternehmenssicherheit und Datenschutz",
+      "fast": "Blitzschnell",
+      "fastDesc": "Optimiert für Geschwindigkeit und Genauigkeit"
+    },
+    "buttons": {
+      "getStarted": "Loslegen",
+      "learnMore": "Mehr Erfahren",
+      "startDetection": "Erkennung Starten"
+    },
+    "stats": {
+      "accuracy": "Genauigkeit",
+      "speed": "Verarbeitungsgeschwindigkeit",
+      "supported": "Unterstützte Objekte"
+    }
+  },
+  "detection": {
+    "title": "Objekterkennung",
+    "subtitle": "Laden Sie ein Bild hoch oder verwenden Sie Ihre Kamera zur Objekterkennung",
+    "status": {
+      "ready": "BEREIT",
+      "initializing": "INITIALISIERUNG",
+      "loading_models": "MODELLE LADEN",
+      "calibrating": "KALIBRIERUNG",
+      "scanning": "SCANNEN",
+      "processing": "VERARBEITUNG"
+    },
+    "upload": {
+      "title": "Bild Hochladen",
+      "dragDrop": "Bild hier hineinziehen",
+      "or": "oder",
+      "browse": "Dateien Durchsuchen",
+      "camera": "Kamera Verwenden",
+      "formats": "Unterstützte Formate: JPG, PNG, WEBP"
+    },
+    "camera": {
+      "capture": "Foto Aufnehmen",
+      "close": "Kamera Schließen",
+      "retake": "Foto Wiederholen"
+    },
+    "results": {
+      "title": "Erkennungsergebnisse",
+      "detected": "Erkannte Objekte",
+      "confidence": "Vertrauen",
+      "coordinates": "Koordinaten",
+      "noObjects": "Keine Objekte erkannt",
+      "error": "Erkennung fehlgeschlagen",
+      "download": "Ergebnisse Herunterladen"
+    },
+    "errors": {
+      "uploadFailed": "Bild-Upload fehlgeschlagen",
+      "detectionFailed": "Erkennung fehlgeschlagen",
+      "invalidFormat": "Ungültiges Bildformat",
+      "cameraError": "Kamerazugang verweigert",
+      "networkError": "Netzwerkfehler aufgetreten"
+    },
+    "scanning": {
+      "progress": "Scan-Fortschritt",
+      "analyzing": "Bild wird analysiert...",
+      "complete": "Scan Abgeschlossen"
+    }
+  },
+  "about": {
+    "title": "Über ELEVEN11",
+    "subtitle": "Fortschrittliche Objekterkennungstechnologie",
+    "description": "ELEVEN11 ist ein hochmodernes Objekterkennungssystem, das von modernsten Algorithmen für künstliche Intelligenz und maschinelles Lernen angetrieben wird.",
+    "features": {
+      "title": "Hauptmerkmale",
+      "realtime": "Echtzeit-Verarbeitung",
+      "accuracy": "Hohe Genauigkeit",
+      "multiple": "Mehrere Objekttypen",
+      "secure": "Sicher und Privat"
+    },
+    "technology": {
+      "title": "Technologie-Stack",
+      "ai": "KI und Maschinelles Lernen",
+      "computer_vision": "Computer Vision",
+      "deep_learning": "Deep Learning",
+      "neural_networks": "Neuronale Netzwerke"
+    },
+    "team": {
+      "title": "Unser Team",
+      "description": "Erstellt von einem Team leidenschaftlicher Entwickler und KI-Forscher"
+    }
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "view": "Anzeigen",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "retry": "Wiederholen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "search": "Suchen",
+    "filter": "Filter",
+    "sort": "Sortieren",
+    "language": "Sprache"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "Erkennungszusammenfassung",
+    "status": {
+      "critical": "KRITISCH",
+      "warning": "WARNUNG", 
+      "safe": "SICHER",
+      "unknown": "SCANNEN"
+    },
+    "stats": {
+      "detected": "ERKANNT",
+      "confidence": "SICHERHEIT"
+    },
+    "equipment": {
+      "title": "Sicherheitsausrüstung",
+      "fireExtinguisher": "Feuerlöscher",
+      "oxygenTank": "Sauerstofftank",
+      "toolbox": "Werkzeugkasten",
+      "present": "Vorhandene Ausrüstung",
+      "missing": "Fehlende Ausrüstung",
+      "additional": "Zusätzliche Objekte",
+      "detected": "ERKANNT",
+      "critical": "KRITISCH",
+      "optional": "OPTIONAL"
+    },
+    "system": {
+      "status": "SYSTEMSTATUS"
+    },
+    "recommendations": {
+      "title": "Kritischer Alarm",
+      "criticalMissing": "{{count}} kritische Sicherheitsausrüstung fehlt. Sofortiges Handeln erforderlich."
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "Feuerlöscher mit {{confidence}}% Sicherheit erkannt",
+    "oxygenTankDetected": "Sauerstofftank mit {{confidence}}% Sicherheit erkannt",
+    "emergencyKitDetected": "Notfallkit mit {{confidence}}% Sicherheit erkannt",
+    "objectDetected": "{{object}} mit {{confidence}}% Sicherheit erkannt",
+    "noObjectsDetected": "Keine Objekte im Bild erkannt",
+    "multipleObjectsDetected": "{{count}} Objekte erkannt",
+    "warningFireExtinguisherMissing": "Warnung! Feuerlöscher fehlt am erwarteten Ort",
+    "warningOxygenLevelLow": "Warnung! Sauerstofftank-Level scheint niedrig zu sein",
+    "detectionComplete": "Erkennungsscan abgeschlossen",
+    "detectionStarted": "Objekterkennungsscan wird gestartet",
+    "detectionFailed": "Erkennungsscan fehlgeschlagen. Bitte versuchen Sie es erneut",
+    "audioEnabled": "Audio-Ansagen aktiviert",
+    "audioDisabled": "Audio-Ansagen deaktiviert"
+  }
+}

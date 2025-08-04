@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "detection": "الكشف",
+    "about": "حول",
+    "title": "ELEVEN11"
+  },
+  "home": {
+    "title": "ELEVEN11",
+    "subtitle": "نظام الكشف المتقدم عن الكائنات",
+    "description": "منصة الجيل التالي للكشف عن الكائنات وتحليلها بتقنية الذكاء الاصطناعي",
+    "features": {
+      "realtime": "الكشف في الوقت الفعلي",
+      "realtimeDesc": "كشف وتصنيف فوري للكائنات",
+      "advanced": "ذكاء اصطناعي متقدم",
+      "advancedDesc": "نماذج تعلم آلة متطورة",
+      "security": "معالجة آمنة",
+      "securityDesc": "أمان وخصوصية على مستوى المؤسسات",
+      "fast": "سرعة البرق",
+      "fastDesc": "محسن للسرعة والدقة"
+    },
+    "buttons": {
+      "getStarted": "ابدأ",
+      "learnMore": "اعرف أكثر",
+      "startDetection": "ابدأ الكشف"
+    },
+    "stats": {
+      "accuracy": "الدقة",
+      "speed": "سرعة المعالجة",
+      "supported": "الكائنات المدعومة"
+    }
+  },
+  "detection": {
+    "title": "كشف الكائنات",
+    "subtitle": "ارفع صورة أو استخدم الكاميرا للكشف عن الكائنات",
+    "status": {
+      "ready": "جاهز",
+      "initializing": "جاري التهيئة",
+      "loading_models": "جاري تحميل النماذج",
+      "calibrating": "جاري المعايرة",
+      "scanning": "جاري المسح",
+      "processing": "جاري المعالجة"
+    },
+    "upload": {
+      "title": "رفع صورة",
+      "dragDrop": "اسحب وأفلت صورة هنا",
+      "or": "أو",
+      "browse": "تصفح الملفات",
+      "camera": "استخدام الكاميرا",
+      "formats": "الصيغ المدعومة: JPG، PNG، WEBP"
+    },
+    "camera": {
+      "capture": "التقط صورة",
+      "close": "أغلق الكاميرا",
+      "retake": "أعد التقاط الصورة"
+    },
+    "results": {
+      "title": "نتائج الكشف",
+      "detected": "الكائنات المكتشفة",
+      "confidence": "الثقة",
+      "coordinates": "الإحداثيات",
+      "noObjects": "لم يتم العثور على كائنات",
+      "error": "فشل الكشف",
+      "download": "تحميل النتائج"
+    },
+    "errors": {
+      "uploadFailed": "فشل في رفع الصورة",
+      "detectionFailed": "فشل الكشف",
+      "invalidFormat": "صيغة صورة غير صالحة",
+      "cameraError": "تم رفض الوصول للكاميرا",
+      "networkError": "حدث خطأ في الشبكة"
+    },
+    "scanning": {
+      "progress": "تقدم المسح",
+      "analyzing": "جاري تحليل الصورة...",
+      "complete": "اكتمل المسح"
+    }
+  },
+  "about": {
+    "title": "حول ELEVEN11",
+    "subtitle": "تقنية الكشف المتقدم عن الكائنات",
+    "description": "ELEVEN11 هو نظام كشف كائنات متطور يعمل بخوارزميات الذكاء الاصطناعي والتعلم الآلي المتقدمة.",
+    "features": {
+      "title": "الميزات الرئيسية",
+      "realtime": "معالجة في الوقت الفعلي",
+      "accuracy": "دقة عالية",
+      "multiple": "أنواع كائنات متعددة",
+      "secure": "آمن وخاص"
+    },
+    "technology": {
+      "title": "التقنيات المستخدمة",
+      "ai": "الذكاء الاصطناعي والتعلم الآلي",
+      "computer_vision": "رؤية الحاسوب",
+      "deep_learning": "التعلم العميق",
+      "neural_networks": "الشبكات العصبية"
+    },
+    "team": {
+      "title": "فريقنا",
+      "description": "تم بناؤه من قبل فريق من المطورين المتحمسين وباحثي الذكاء الاصطناعي"
+    }
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "view": "عرض",
+    "download": "تحميل",
+    "upload": "رفع",
+    "retry": "إعادة المحاولة",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب",
+    "language": "اللغة"
+  },
+  "languages": {
+    "en": "English",
+    "hi": "हिंदी",
+    "es": "Español",
+    "fr": "Français",
+    "zh": "中文",
+    "ar": "العربية",
+    "ru": "Русский",
+    "de": "Deutsch"
+  },
+  "summary": {
+    "title": "ملخص الكشف",
+    "status": {
+      "critical": "حرج",
+      "warning": "تحذير", 
+      "safe": "آمن",
+      "unknown": "مسح"
+    },
+    "stats": {
+      "detected": "مكتشف",
+      "confidence": "الثقة"
+    },
+    "equipment": {
+      "title": "معدات الأمان",
+      "fireExtinguisher": "طفاية الحريق",
+      "oxygenTank": "خزان الأكسجين",
+      "toolbox": "صندوق الأدوات",
+      "present": "المعدات الموجودة",
+      "missing": "المعدات المفقودة",
+      "additional": "كائنات إضافية",
+      "detected": "مكتشف",
+      "critical": "حرج",
+      "optional": "اختياري"
+    },
+    "system": {
+      "status": "حالة_النظام"
+    },
+    "recommendations": {
+      "title": "تنبيه حرج",
+      "criticalMissing": "{{count}} معدات أمان حرجة مفقودة. مطلوب إجراء فوري."
+    }
+  },
+  "tts": {
+    "fireExtinguisherDetected": "تم اكتشاف طفاية حريق بثقة {{confidence}}%",
+    "oxygenTankDetected": "تم اكتشاف خزان أكسجين بثقة {{confidence}}%",
+    "emergencyKitDetected": "تم اكتشاف حقيبة الطوارئ بثقة {{confidence}}%",
+    "objectDetected": "تم اكتشاف {{object}} بثقة {{confidence}}%",
+    "noObjectsDetected": "لم يتم العثور على أي كائنات في الصورة",
+    "multipleObjectsDetected": "تم اكتشاف {{count}} كائنات",
+    "warningFireExtinguisherMissing": "تحذير! طفاية الحريق مفقودة من الموقع المتوقع",
+    "warningOxygenLevelLow": "تحذير! يبدو أن مستوى خزان الأكسجين منخفض",
+    "detectionComplete": "اكتمل فحص الكشف",
+    "detectionStarted": "بدء فحص كشف الكائنات",
+    "detectionFailed": "فشل فحص الكشف. يرجى المحاولة مرة أخرى",
+    "audioEnabled": "تم تمكين الإعلانات الصوتية",
+    "audioDisabled": "تم تعطيل الإعلانات الصوتية"
+  }
+}
