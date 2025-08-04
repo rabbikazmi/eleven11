@@ -28,36 +28,22 @@ eleven11/
 2. **Double-click `start_frontend.bat`** - Starts React server on port 3000
 3. **Open browser to http://localhost:3000**
 
-### Option 2: Manual Start
+##  Integration Status
 
-#### Terminal 1 - Backend:
-```bash
-cd "c:\Users\Rabbika Azmi\OneDrive\Desktop\buildwdelhi2_hack\eleven11\backend"
-python main.py
-```
-
-#### Terminal 2 - Frontend:
-```bash
-cd "c:\Users\Rabbika Azmi\OneDrive\Desktop\buildwdelhi2_hack\eleven11\frontend"
-npm start
-```
-
-## ✅ Integration Status
-
-### Backend (Port 5000) ✅
+### Backend (Port 5000) 
 - Flask API running successfully
 - YOLO model (`best.pt`) loaded correctly
 - CORS enabled for frontend requests
 - Endpoints: `/` (health) and `/detect` (main API)
 
-### Frontend (Port 3000) ✅  
+### Frontend (Port 3000) 
 - React development server running
 - Camera integration with react-webcam
 - File upload functionality
 - API integration with backend
 - Modern space-themed UI
-
-### Dependencies ✅
+- 
+### Dependencies 
 - **Backend**: Flask, CORS, Ultralytics YOLO, OpenCV, PIL, NumPy
 - **Frontend**: React, Axios, React-webcam, Tailwind CSS, Radix UI
 - **Compatibility**: Fixed ajv/ajv-keywords version conflicts
@@ -85,16 +71,16 @@ Body: FormData with 'image' field
 }
 ```
 
-## Features Working ✅
-- ✅ Real-time camera capture
-- ✅ File upload (drag & drop)
-- ✅ Safety gear detection using your trained model
-- ✅ Bounding box visualization
-- ✅ Confidence scores display  
-- ✅ Results download (JSON)
-- ✅ Error handling
-- ✅ Loading states and animations
-- ✅ Space-themed UI with HUD elements
+## Features Working 
+-  Real-time camera capture
+-  File upload (drag & drop)
+-  Safety gear detection using your trained model
+-  Bounding box visualization
+-  Confidence scores display  
+-  Results download (JSON)
+-  Error handling
+-  Loading states and animations
+-  Space-themed UI with HUD elements
 
 ## Troubleshooting
 
