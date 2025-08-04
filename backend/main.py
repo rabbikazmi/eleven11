@@ -11,13 +11,19 @@ import base64
 app = Flask(__name__)
 CORS(app)
 
-# Load YOLOv8 model
-model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "model weights", "best.pt")
-model = YOLO(model_path)  # Load model from the model weights folder
+# Load YOLOv8 model - Docker-compatible path
+model_path = os.path.join("model_weights", "best.pt")
+if not os.path.exists(model_path):
+    # Fallback to original path structure
+    model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "model weights", "best.pt")
 
-@app.route('/')
-def home():
-    return 'Eleven11 Crew Safety Detection API'
+print(f"Loading model from: {model_path}")
+if os.path.exists(model_path):
+    model = YOLO(model_path)
+    print("✅ Model loaded successfully")
+else:
+    print("❌ Model file not found!")
+    model = None
 
 @app.route('/detect', methods=['POST'])
 def detect_gear():
@@ -67,5 +73,25 @@ def detect_gear():
             base64.b64encode(img_bytes).decode('utf-8')
     }
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint for deployment platforms"""
+    return jsonify({
+        "status": "healthy",
+        "model_loaded": model is not None,
+        "timestamp": os.environ.get('DEPLOYMENT_TIME', 'unknown')
+    })
+
+@app.route('/', methods=['GET'])
+def root():
+    """Root endpoint"""
+    return jsonify({
+        "message": "Eleven11 Detection API",
+        "version": "1.0",
+        "endpoints": ["/detect", "/health"]
+    })
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    print(f"🚀 Starting server on port {port}")
+    app.run(host='0.0.0.0', port=port, debug=False)
