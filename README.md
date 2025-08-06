@@ -1,25 +1,44 @@
 <div align="center">
-<h1>Eleven11 – Spot. Detect. Protect.</h1>
-<p>
-<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
-<img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python" alt="Python 3.10+">
-<img src="https://img.shields.io/badge/Backend-Flask-black?style=flat&logo=flask" alt="Backend: Flask">
-<img src="https://img.shields.io/badge/Frontend-React-blue?style=flat&logo=react" alt="Frontend: React">
-<img src="https://img.shields.io/badge/Model-YOLOv8-blueviolet?style=flat" alt="Model: YOLOv8">
-<img src="https://img.shields.io/badge/Styling-TailwindCSS-cyan?style=flat&logo=tailwindcss" alt="Styling: TailwindCSS">
-</p>
+  <h1>Eleven11 – Spot. Detect. Protect.</h1>
+  <p>
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+    <img src="https://img.shields.io/badge/Python-3.10+-blue?style=flat&logo=python" alt="Python 3.10+">
+    <img src="https://img.shields.io/badge/Backend-Flask-black?style=flat&logo=flask" alt="Backend: Flask">
+    <img src="https://img.shields.io/badge/Frontend-React-blue?style=flat&logo=react" alt="Frontend: React">
+    <img src="https://img.shields.io/badge/Model-YOLOv8-blueviolet?style=flat" alt="Model: YOLOv8">
+    <img src="https://img.shields.io/badge/Styling-TailwindCSS-cyan?style=flat&logo=tailwindcss" alt="Styling: TailwindCSS">
+    <img src="https://img.shields.io/badge/Feature-Multilingual-green?style=flat" alt="Multilingual Support">
+    <img src="https://img.shields.io/badge/Feature-TTS-orange?style=flat" alt="Text-to-Speech">
+  </p>
 </div>
 
-## Overview
-Eleven11 Crew is a web-based application designed to identify critical space safety gear in visual data from space stations. It utilizes a custom-trained YOLOv8 model to detect essential equipment such as O_2 cylinders, fire extinguishers, and toolkits. The application features a modern, responsive interface with real-time detection capabilities and enhanced visualization. 🚀
 
-## Features
-- **Real-time Object Detection**: AI-powered safety equipment identification
-- **Web-based Interface**: Upload images or use camera for live capture
-- **Equipment Detection**: Supports ToolBox, OxygenTank, and FireExtinguisher detection
-- **Enhanced Visualization**: Large, readable text labels with corner-style bounding boxes
-- **Clean UI**: Modern design with external text positioning to avoid object obstruction
-- **Responsive Design**: Works seamlessly across different screen sizes
+##  Overview
+
+**Eleven11** is a web-based safety gear detection platform that uses a YOLOv8 model to identify **O₂ cylinders**, **toolkits**, and **fire extinguishers** from uploaded images or live video feeds.  
+It supports real-time detection, multilingual user interface, text-to-speech alerts, and a detection summary panel for enhanced usability in high-stakes environments like space stations.
+
+
+##  Features
+
+-  **Real-time Object Detection**
+-  **Multilingual UI** (English, Hindi, Spanish, French, Chinese, Arabic, Russian, German)
+-  **Text-to-Speech (TTS)** Alerts using Web Speech API
+-  **Detection Summary Panel**
+-  Upload / Live Camera Detection
+-  Clean UI with external labels and confidence scores
+-  Fully responsive design
+
+---
+
+##  Setup Instructions
+
+###  Backend
+
+```bash
+cd backend
+pip install -r requirements.txt
+
 
 ## Setup Instructions
 
@@ -105,16 +124,15 @@ Uploads an image file and returns detection results with annotated image.
 ```
 eleven11/
 ├── backend/
-│   ├── main.py
-│   └── requirements.txt
 ├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── ...
+│   ├── node_modules/
 │   ├── public/
-│   └── package.json
-├── model weights/
-│   └── best.pt
-└── README.md
+│   └── src/
+│       ├── components/
+│       ├── hooks/
+│       ├── i18n/ # Multilingual support config (translations folder)
+│       ├── lib/
+│       └── pages/
+├── model weights/ # Trained YOLOv8 weight file
+
 ```
