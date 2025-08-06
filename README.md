@@ -29,8 +29,6 @@ It supports real-time detection, multilingual user interface, text-to-speech ale
 -  Clean UI with external labels and confidence scores
 -  Fully responsive design
 
----
-
 ##  Setup Instructions
 
 ###  Backend
