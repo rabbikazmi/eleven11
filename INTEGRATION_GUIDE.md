@@ -107,4 +107,4 @@ python test_integration.py
 - **File**: `model weights/best.pt`
 - **Size**: 87.6MB
 - **Type**: YOLOv8 PyTorch model
-- **Status**: ✅ Successfully loaded and integrated
+- **Status**: Successfully loaded and integrated
