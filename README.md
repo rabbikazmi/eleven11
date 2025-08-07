@@ -134,3 +134,6 @@ eleven11/
 ├── model weights/ # Trained YOLOv8 weight file
 
 ```
+<div align="center">
+  <h4> made with ‪‪❤︎‬ by team 11:11 crew</h4>
+</div>
